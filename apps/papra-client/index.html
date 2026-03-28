@@ -70,8 +70,9 @@
     <script>
       (function () {
         const stored = localStorage?.getItem('papra_color_mode') ?? 'dark';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        if (stored === 'dark') {
+        if (stored === 'dark' || (stored === 'system' && prefersDark)) {
           document.documentElement.setAttribute('data-kb-theme', 'dark');
         }
       })();
